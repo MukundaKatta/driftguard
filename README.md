@@ -1,38 +1,43 @@
-# DriftGuard
+# driftguard
 
-> Your ML Models Are Drifting. We'll Catch It.
+**Your ML models are drifting. We'll catch it.**
 
-## Overview
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-DriftGuard continuously monitors machine learning models in production for data drift, concept drift, and performance degradation. Get alerted before your models silently fail.
-
-## Key Features
-
-- **Data Drift Detection** — Statistical tests on feature distributions (KS, PSI, Chi-squared)
-- **Concept Drift Detection** — Monitor prediction distribution shifts
-- **Performance Tracking** — Real-time accuracy, precision, recall monitoring
-- **Alert System** — Slack, email, PagerDuty notifications on drift events
-- **Root Cause Analysis** — Identify which features are drifting and why
-- **Auto-Retrain Triggers** — Automatically trigger retraining pipelines
-- **Dashboard** — Visual drift reports and model health scores
-
-## Tech Stack
-
-- **Backend:** Python, FastAPI
-- **ML:** scikit-learn, scipy, evidently
-- **Database:** PostgreSQL, TimescaleDB
-- **Monitoring:** Prometheus, Grafana
-- **Deployment:** Docker, Kubernetes
-
-## Getting Started
-
+## Install
 ```bash
-git clone https://github.com/MukundaKatta/driftguard.git
-cd driftguard
-pip install -e .
-driftguard monitor --model model.pkl --data incoming_data.csv
+pip install -e ".[dev]"
 ```
 
----
+## Quick Start
+```python
+from src.core import Driftguard
+ instance = Driftguard()
+r = instance.process(input="test")
+```
 
-**Mukunda Katta** · [Officethree Technologies](https://github.com/MukundaKatta/Office3) · 2026
+## CLI
+```bash
+python -m src status
+python -m src run --input "data"
+```
+
+## API
+| Method | Description |
+|--------|-------------|
+| `process()` | Process |
+| `analyze()` | Analyze |
+| `transform()` | Transform |
+| `validate()` | Validate |
+| `export()` | Export |
+| `get_stats()` | Get stats |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
+
+## Test
+```bash
+pytest tests/ -v
+```
+
+## License
+(c) 2026 Officethree Technologies. All Rights Reserved.
